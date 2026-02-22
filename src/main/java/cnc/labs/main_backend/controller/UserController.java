@@ -21,9 +21,9 @@ public class UserController {
 
     @GetMapping("/login")
     public ResponseEntity<?> login(@RequestHeader("userEmail") String mail, @RequestHeader("userPassword") String password) {
-        userService.loginUser(mail, password);
+        var createdUser = userService.loginUser(mail, password);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(createdUser);
     }
 
     @PostMapping("/signup")
